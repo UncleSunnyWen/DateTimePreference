@@ -1,0 +1,42 @@
+* DateTimePreference
+
+** Description
+*** A DateTimePreference, analogous to [[https://github.com/bostonandroid/DatePreference][DatePreference]] or [[https://github.com/bostonandroid/TimePreference][TimePreference]]
+**** Screenshots: [[file:./Screenshots/img0.png][img0]] [[file:./Screenshots/img1.png][img1]]
+
+** Usage
+*** In Eclipse with your project open:
+
+  1. In the Package Explorer right click on your project and select "Properties".
+  2. Select "Java Build Path" -> "Libraries".
+  3. "Add External JARs..." then select the DateTimePreference.jar file.
+
+*** In your activity that descends from PreferenceActivity:
+
+    #+BEGIN_SRC java
+      import com.unclesunny.datetimepreference.DateTimePreference;
+    #+END_SRC
+  
+*** In your preference XML:
+
+    #+BEGIN_SRC xml
+      <com.unclesunny.datetimepreference.DateTimePreference
+         android:key="start_time"
+         android:title="Start Time" />
+    #+END_SRC
+
+*** To quickly get the Date and Time selected for "start_time", in your PreferenceActivity:
+
+    #+BEGIN_SRC java
+    DateTimePreference.getDateTimeFor(
+    PreferenceManager.getDefaultSharePreferences(this),
+    "start_time");
+    #+END_SRC
+
+*** To set the date and time use .setDateTime(String).
+
+*** To make the JAR:
+
+  With just the DateTimePreference source code loaded in Eclipse:
+
+  In the Package Explorer right click on the "default.jardesc" file and select "Create JAR"

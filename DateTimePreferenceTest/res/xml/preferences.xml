@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <com.unclesunny.datetimepreference.DateTimePreference
+        android:defaultValue="14:01"
+        android:key="start_time"
+        android:title="Start Time" />
+    <com.unclesunny.datetimepreference.DateTimePreference
+        android:key="end_time"
+        android:title="End Time" />
+</PreferenceScreen>
