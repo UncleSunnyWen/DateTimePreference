@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.res.TypedArray;
+import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.preference.DialogPreference;
@@ -167,13 +168,14 @@ public class DateTimePreference extends DialogPreference
 	@Override
 	protected void onRestoreInstanceState(Parcelable state) {
 		if (state == null || !state.getClass().equals(SavedState.class)) {
+			// Didn't save state for us in onSaveInstanceState
 			super.onRestoreInstanceState(state);
-			setTheDateTime(((SavedState) state).dateValue);
-		} else {
-			SavedState s = (SavedState) state;
-			super.onRestoreInstanceState(s.getSuperState());
-			setTheDateTime(s.dateValue);
+			return;
 		}
+
+		SavedState s = (SavedState) state;
+		super.onRestoreInstanceState(s.getSuperState());
+		setTheDateTime(s.dateValue);
 	}
 
 	/**
@@ -214,17 +216,16 @@ public class DateTimePreference extends DialogPreference
 	}
 
 	@Override
-	protected void onClick() {
-		super.onClick();
-		getDialog().setTitle(summaryDateFormatter(getContext()).format(getDateTime().getTime()) + "    "
-				+ summaryTimeFormatter(getContext()).format(getDateTime().getTime()));
-	}
-
-	@Override
 	public void onClick(DialogInterface dialog, int which) {
 		super.onClick(dialog, which);
 		if (getDialog().getCurrentFocus() != null)
 			getDialog().getCurrentFocus().clearFocus();
+	}
+
+	@Override
+	protected void showDialog(Bundle state) {
+		super.showDialog(state);
+		onTimeChanged(null, 0, 0);
 	}
 
 	private void setTheDateTime(String s) {
