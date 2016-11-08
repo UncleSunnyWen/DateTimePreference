@@ -205,12 +205,14 @@ public class DateTimePreference extends DialogPreference
 		if (shouldSave) {
 			if (this.changedValueCanBeNull != null) {
 				setTheDateTime(this.changedValueCanBeNull);
+				callChangeListener(this.changedValueCanBeNull);
 				this.changedValueCanBeNull = null;
 			} else {
 				Calendar selected = new GregorianCalendar(this.datePicker.getYear(), this.datePicker.getMonth(),
 						this.datePicker.getDayOfMonth(), this.timePicker.getCurrentHour(),
 						this.timePicker.getCurrentMinute());
 				setTheDateTime(formatter().format(selected.getTime()));
+				callChangeListener(formatter().format(selected.getTime));
 			}
 		}
 	}

@@ -16,6 +16,6 @@
         android:id="@+id/timepicker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:datePickerMode="spinner" />
+        android:timePickerMode="spinner" />
 
 </LinearLayout>
