@@ -108,7 +108,7 @@ public class DateTimePreference extends DialogPreference
 	 * @return the SimpleDateFormat used for XML times
 	 */
 	public static DateFormat formatter() {
-		return new SimpleDateFormat("yyyy.MM.dd HH:mm");
+		return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
 	}
 
 	/**
