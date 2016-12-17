@@ -49,7 +49,7 @@ public class DateTimePreferenceActivity extends PreferenceActivity {
 	protected void onPause() {
 		super.onPause();
 		Editor editor = getPreferences(Context.MODE_PRIVATE).edit();
-		editor.putString("start_time", DateTimePreference.formatter().format(getCalendarofEnd().getTime()));
+		editor.putString("start_time", DateTimePreference.formatter().format(getCalendarofStart().getTime()));
 	}
 	
 	public void clearSharedPreferences(){
